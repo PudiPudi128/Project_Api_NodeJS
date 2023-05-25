@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { config } = require("../config/secret");
 
 exports.auth = (req, res, next) => {
   const token = req.header("x-api-key");
@@ -7,7 +8,7 @@ exports.auth = (req, res, next) => {
   }
   try {
     // מנסה לפענח את הטוקן
-    const decodeToken = jwt.verify(token, process.env.SECRET);
+    const decodeToken = jwt.verify(token, config.TOKEN_SECRET);
     // req -> זהה בפונקציה הנל ובפונקציה הבאה בשרשור , ומאפיין שניצור בו יהיה קיים גם בפונקציה הבאה
     req.tokenData = decodeToken;
     // מפעיל את הפונקציה הבאה בשרשור של הראוטר
@@ -26,7 +27,7 @@ exports.authAdmin = (req, res, next) => {
   }
   try {
     // מנסה לפענח את הטוקן
-    const decodeToken = jwt.verify(token, process.env.SECRET);
+    const decodeToken = jwt.verify(token, config.TOKEN_SECRET);
     if (decodeToken.role != "admin" && decodeToken.role != "superadmin") {
       return res
         .status(401)

@@ -3,7 +3,8 @@ const http = require("http");
 const path = require("path");
 require("dotenv").config();
 
-const {routesInit} = require("./routes/configRoutes")
+const {routesInit} = require("./routes/configRoutes");
+const { config } = require("./config/secret");
 require("./db/mongoConnect");
 
 const app = express();
@@ -19,5 +20,5 @@ routesInit(app);
 const server = http.createServer(app);
 // בודק אם אנחנו על שרת אמיתי ואם כן דואג שנקבל את הפורט שהענן צריך
 // אם לא הברירת מחדל תיהיה 3003
-const port = process.env.PORT;
+const port = config.PORT;
 server.listen(port);

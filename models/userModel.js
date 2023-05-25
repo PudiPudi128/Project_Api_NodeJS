@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 // ספרייה שיודעת לייצר ולנהל טוקנים
 const jwt = require("jsonwebtoken");
+const { config } = require("../config/secret");
 
 
 const userSchema = new mongoose.Schema({
@@ -28,7 +29,7 @@ exports.createToken = (user_id,role = "user") => {
   // פרמטר ראשון התכולה של הטוקן ,כרגע איי די בהמשך יהיה גם רול/תפקיד
   // פרמטר שני - מילה סודית בשביל לפענח את הטוקן
   // פרמטר שלישי תוקף הטוקן
-  const token = jwt.sign({_id:user_id,role},process.env.SECRET,{expiresIn:"60000mins"})
+  const token = jwt.sign({_id:user_id,role},config.TOKEN_SECRET,{expiresIn:"60000mins"})
   return token;
 }
 
