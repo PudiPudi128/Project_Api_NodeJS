@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <title>API Documentation</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="m-5 text-center">API Documentation</h1>
+      <h2>Toys API</h2>
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>HTTP Method</th>
+            <th>Route</th>
+            <th>Descrption</th>
+            <th>Parameters / Request Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bg-primary text-center fw-bold">GET</td>
+            <td class="bg-primary bg-opacity-25 text-center">/toys</td>
+            <td class="bg-primary bg-opacity-25 text-center">
+              Returns a list of toys according to the query parameters.
+            </td>
+            <td class="bg-primary bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>page:</strong>
+                  (optional): page number to return (default: 1).
+                  <br />
+                  <a target="_blank" href="http://localhost:3003/toys?page=1"
+                    >http://localhost:3003/toys?page=1</a
+                  >
+                </li>
+                <li>
+                  <strong>perPage:</strong>
+                  (optional): number of toys per page (default: 5, maximum: 10).
+                  <br />
+                  <a target="_blank" href="http://localhost:3003/toys?perPage=5"
+                    >"http://localhost:3003/toys?perPage=5</a
+                  >
+                </li>
+                <li>
+                  <strong>sort:</strong>
+                  (optional): field to sort by (default: price).
+                  <br />
+                  <a
+                    target="_blank"
+                    href="http://localhost:3003/toys?perPage=7&sort=price"
+                    >http://localhost:3003/toys?perPage=7&sort=price</a
+                  >
+                </li>
+                <li>
+                  <strong>reverse:</strong>
+                  (optional): if set to yes, sorts in descending order.
+                  <br />
+                  <a
+                    target="_blank"
+                    href="http://localhost:3003/toys?sort=price&reverse=yes"
+                    >http://localhost:3003/toys?sort=price&reverse=yes</a
+                  >
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-primary text-center fw-bold">GET</td>
+            <td class="bg-primary bg-opacity-25 text-center">/toys/search</td>
+            <td class="bg-primary bg-opacity-25 text-center">
+              Returns a list of toys matching a search query.
+            </td>
+            <td class="bg-primary bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>s:</strong>
+                  the search query to match against toy names or descriptions.
+                  <br />
+                  <a
+                    target="_blank"
+                    href="http://localhost:3003/toys/search?s=action "
+                    >http://localhost:3003/toys/search?s=action</a
+                  >
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-primary text-center">GET</td>
+            <td class="bg-primary bg-opacity-25 text-center">
+              /toys/category/:catname
+            </td>
+            <td class="bg-primary bg-opacity-25 text-center">
+              Returns a list of toys by category.
+            </td>
+            <td class="bg-primary bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>catName:</strong>
+                  the name of the category to retrieve toys for.
+                  <br />
+                  <a
+                    target="_blank"
+                    href="http://localhost:3003/toys/category/boardGames"
+                    >http://localhost:3003/toys/category/boardGames</a
+                  >
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-primary text-center fw-bold">GET</td>
+            <td class="bg-primary bg-opacity-25 text-center">/toys/prices</td>
+            <td class="bg-primary bg-opacity-25 text-center">
+              Returns a list of toys according to the query parameters.
+            </td>
+            <td class="bg-primary bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>min:</strong>
+                  (optional): minimum price to filter by (default: 0).
+                </li>
+                <li>
+                  <strong>max:</strong>
+                  (optional): maximum price to filter by (default: maximum
+                  999999).
+                  <br />
+                  <a
+                    target="_blank"
+                    href="http://localhost:3003/toys/prices?min=15&max=25"
+                    >http://localhost:3003/toys/prices?min=15&max=25</a
+                  >
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-primary text-center fw-bold">GET</td>
+            <td class="bg-primary bg-opacity-25 text-center">
+              /toys/single/:id
+            </td>
+            <td class="bg-primary bg-opacity-25 text-center">
+              Returns a single toy by its ID.
+            </td>
+            <td class="bg-primary bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>id:</strong>
+                  the ID of the toy to retrieve.
+                  <br />
+                  <a
+                    target="_blank"
+                    href="http://localhost:3003/toys/single/646f66083b3e29dc0203cc9c"
+                    >http://localhost:3003/toys/single/646f66083b3e29dc0203cc9c</a
+                  >
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-success text-center fw-bold">POST</td>
+            <td class="bg-success bg-opacity-25 text-center">/toys</td>
+            <td class="bg-success bg-opacity-25 text-center">
+              Adds a new toy. <br /><strong>Token is required!</strong>
+            </td>
+            <td class="bg-success bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>Request Body:</strong>
+                  Toy data to be added in the following format.
+                </li>
+                <li>
+                  <strong>price:</strong>
+                  1-999999
+                </li>
+                <li>
+                  <strong>img_url:</strong>
+                  is allowed and not required
+                  <br />
+                  <pre>
+{
+name: String,
+info: String,
+category: String,
+price: Number,
+img_url: String
+}</pre
+                  >
+                  img_url is allowed and not required
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-warning text-center fw-bold">PUT</td>
+            <td class="bg-warning bg-opacity-25 text-center">/toys/:editId</td>
+            <td class="bg-warning bg-opacity-25 text-center">
+              Updates an existing toy. <br /><strong>Token is required!</strong>
+            </td>
+            <td class="bg-warning bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>editId:</strong>
+                  the ID of the toy to update.
+                </li>
+                <li>
+                  <strong>Request Body:</strong>
+                  Toy data to be updated in the following format.
+                </li>
+                <li>
+                  <strong>price:</strong>
+                  1-999999
+                </li>
+                <li>
+                  <strong>img_url:</strong>
+                  is allowed and not required
+                  <br />
+                  <pre>
+{
+name: String,
+info: String,
+category: String,
+price: Number,
+img_url: String
+}</pre
+                  >
+                  img_url is allowed and not required
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-danger text-center fw-bold">DELETE</td>
+            <td class="bg-danger bg-opacity-25 text-center">/toys/:delId</td>
+            <td class="bg-danger bg-opacity-25 text-center">
+              Deletes a toy by its ID. <br /><strong>Token is required!</strong>
+            </td>
+            <td class="bg-danger bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>delId:</strong>
+                  the ID of the toy to delete.
+                </li>
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Users API</h2>
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>HTTP Method</th>
+            <th>Route</th>
+            <th>Descrption</th>
+            <th>Parameters / Request Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bg-primary text-center fw-bold">GET</td>
+            <td class="bg-primary bg-opacity-25 text-center">/users</td>
+            <td class="bg-primary bg-opacity-25 text-center">Test endpoint to check if the server is running.</td>
+            <td class="bg-primary bg-opacity-25 text-center"><strong>N/A</strong></td>
+          </tr>
+          <tr>
+            <td class="bg-primary text-center fw-bold">GET</td>
+            <td class="bg-primary bg-opacity-25 text-center">/users/userInfo</td>
+            <td class="bg-primary bg-opacity-25 text-center">
+              Get the information for the authenticated user (requires
+              authentication).
+            </td>
+            <td class="bg-primary bg-opacity-25 text-center"><strong>N/A</strong></td>
+          </tr>
+          <tr>
+            <td class="bg-success text-center fw-bold">POST</td>
+            <td class="bg-success bg-opacity-25 text-center">/users</td>
+            <td class="bg-success bg-opacity-25 text-center">TCreate a new user.</td>
+            <td class="bg-success bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>Request Body:</strong>
+                  User data to be post in the following format:
+                  <pre>
+{
+name: String,
+email: String,
+password: String,
+}
+role is allowed and not required (default: user).</pre
+                  >
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="bg-success text-center fw-bold">POST</td>
+            <td class="bg-success bg-opacity-25 text-center">/users/login</td>
+            <td class="bg-success bg-opacity-25 text-center">Authenticate a user and receive a JWT token in response.</td>
+            <td class="bg-success bg-opacity-25">
+              <ol>
+                <li>
+                  <strong>Request Body:</strong>
+                  User data to be loged in in the following format:
+                  <pre>
+{
+email: String,
+password: String
+}
+</pre
+                  >
+                </li>
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Users/Admin Token Abillities</h2>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Admin</th>
+            <th>Default User</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Has the ability to add new toys to the system.</td>
+            <td>Has the ability to add new toys to the system.</td>
+          </tr>
+          <tr>
+            <td>Can edit all information related to any toy in the system.</td>
+            <td>
+              Can only edit information related to toys they have created or are
+              associated with their account.
+            </td>
+          </tr>
+          <tr>
+            <td>Has the ability to delete all toys from the system.</td>
+            <td>
+              Can only delete toys that they have created or are associated with
+              their account.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class="mt-5 p-3 bg-dark text-white-50">
+      <div class="container text-center">
+        <p>
+          <small>Copyright © 2023 <strong>Moshe Rokach</strong></small>
+        </p>
+        <p><small>Fullstack Developer | MongoDB | Node.js</small></p>
+      </div>
+    </footer>
+  </body>
+</html>
