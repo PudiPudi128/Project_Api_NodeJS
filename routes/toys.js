@@ -131,7 +131,6 @@ router.put("/:editId", auth, async(req,res) => {
     else{
         data = await ToyModel.updateOne({_id:id,user_id:req.tokenData._id},req.body);
     }
-    // modfiedCount:1 - אם הצליח
     res.json(data);
   }
   catch(err){
@@ -150,7 +149,6 @@ router.delete("/:delId", auth, async(req,res) => {
     else{
         data = await ToyModel.deleteOne({_id:id,user_id:req.tokenData._id});;
     }
-    // deletedCount:1 - אם הצליח
     res.json(data);
   }
   catch(err){

@@ -17,7 +17,6 @@ exports.validateToy = (_reqBody) => {
     name: Joi.string().min(2).max(400).required(),
     info: Joi.string().min(2).max(400).required(),
     category: Joi.string().min(2).max(400).required(),
-    // allow -> מאפשר לשלוח את האמפיין עם סטרינג ריק
     img_url: Joi.string().min(2).max(800).allow(null, ""),
     price: Joi.number().min(1).max(999999).required()
   })
